@@ -1,17 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Digital Mentor</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Inter Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <!-- QR Code Library for dynamically generating the QR code -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-    <!-- HTML to Canvas Library for downloading the card as an image -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
         /* --- General Body and Layout Fixes --- */
         body {
@@ -84,7 +77,6 @@
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-
         /* --- Component Styles (Unchanged) --- */
         .button-primary {
             background: #000;
@@ -175,7 +167,6 @@
             border: 1px solid rgba(100, 255, 218, 0.5);
             transition: all 0.5s ease-in-out;
         }
-
         /* --- Card Design Styles (Unchanged) --- */
         #printableArea {
             width: 100%;
@@ -279,7 +270,6 @@
         #qrCodeCanvas img {
             border-radius: 0.25rem;
         }
-
         /* --- Responsive Adjustments --- */
         @media (max-width: 768px) {
             body {
@@ -325,42 +315,34 @@
                 padding: 1.5rem 1rem; 
                 min-height: unset;
             }
-
             #printableArea .info101-brand {
                 font-size: 1.2em;
                 margin-bottom: 0.75rem;
             }
-
             #digitalAvatar {
                 width: 96px; 
                 height: 96px;
                 margin-top: 0.25rem;
                 margin-bottom: 1rem;
             }
-
             #printableArea .section-title {
                 font-size: 1em;
             }
-
             #printableArea .section-content {
                 font-size: 0.8em;
             }
-
             .card-section {
                 padding: 0.75rem;
                 width: 100%;
             }
         }
     </style>
-    <!-- We're adding a new cyberpunk-style font from Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <body>
     <div id="app" class="app-container">
-        <!-- Welcome Screen -->
-        <div id="welcomeScreen" class="screen active">
-            <!-- New SVG Icon -->
-            <svg class="mb-8" width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <div id="welcomeScreen" class="screen active">
+                        <svg class="mb-8" width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect x="15" y="15" width="70" height="70" fill="#121921" stroke="#64ffda" stroke-width="3"/>
                 <path d="M30 35H70V65H30V35Z" fill="#121921" stroke="#64ffda" stroke-width="3"/>
                 <path d="M45 45L45 55L55 55L55 45L45 45Z" fill="#64ffda" stroke="#64ffda" stroke-width="2">
@@ -377,13 +359,10 @@
                 Discover Your Digital Self
             </button>
         </div>
-
-        <!-- Question Screen -->
-        <div id="questionScreen" class="screen">
+                <div id="questionScreen" class="screen">
             <p id="questionText" class="question-text"></p>
             <div id="optionsContainer" class="flex flex-wrap justify-center gap-4 mt-6">
-                <!-- Options will be injected here by JavaScript -->
-            </div>
+                            </div>
             <div class="flex flex-col sm:flex-row justify-center gap-4 mt-8">
                 <button id="backButton" class="button-primary opacity-50 cursor-not-allowed" disabled>
                     Back
@@ -393,19 +372,14 @@
                 </button>
             </div>
         </div>
-
-        <!-- Processing Screen -->
-        <div id="processingScreen" class="screen">
+                <div id="processingScreen" class="screen">
             <div class="loading-spinner"></div>
             <p class="text-2xl font-semibold text-gray-200">Your mentor is crafting personalised insights...</p>
             <p class="text-lg text-gray-400 mt-2">Analysing your digital DNA with ✨AI✨.</p>
         </div>
-
-        <!-- Results Screen -->
-        <div id="resultsScreen" class="screen results-section">
+                <div id="resultsScreen" class="screen results-section">
             <div class="w-full flex flex-col items-center">
-                <div id="printableArea"> <!-- Container for the digital card content -->
-                    <div class="card-header">
+                <div id="printableArea">                     <div class="card-header">
                         <h1 class="info101-brand">
                             BE THE ARCHITECT OF<br/>
                             YOUR DIGITAL LIFE
@@ -420,12 +394,8 @@
                         <h2 class="section-title">Your Future Digital Tip!</h2>
                         <p id="futureDigitalTip" class="section-content"></p>
                     </div>
-                    <div class="card-footer">
-                        <div id="qrCodeCanvas"></div>
-                    </div>
                 </div>
-                <!-- UPDATE: Removed Download and More Info buttons -->
-                <div class="flex flex-col gap-4 mt-8 mb-8">
+                                <div class="flex flex-col gap-4 mt-8 mb-8">
                     <button id="goHomeButton" class="button-primary">
                         Start Over
                     </button>
@@ -433,14 +403,12 @@
             </div>
         </div>
     </div>
-
     <script>
         // Get references to DOM elements
         const welcomeScreen = document.getElementById('welcomeScreen');
         const questionScreen = document.getElementById('questionScreen');
         const processingScreen = document.getElementById('processingScreen');
         const resultsScreen = document.getElementById('resultsScreen');
-
         const startButton = document.getElementById('startButton');
         const questionTextElement = document.getElementById('questionText');
         const optionsContainer = document.getElementById('optionsContainer');
@@ -448,17 +416,11 @@
         const backButton = document.getElementById('backButton');
         const digitalSnapshotElement = document.getElementById('digitalSnapshot');
         const futureDigitalTipElement = document.getElementById('futureDigitalTip');
-        // UPDATE: Removed downloadButton and moreInfoButton variables
         const goHomeButton = document.getElementById('goHomeButton');
-        const printableArea = document.getElementById('printableArea');
         const digitalAvatarElement = document.getElementById('digitalAvatar');
-        const qrCodeCanvas = document.getElementById('qrCodeCanvas');
-        let qrcode = null; // Variable to hold the QRCode object
-
         let currentQuestionIndex = 0;
         let userAnswers = {}; // Stores { questionId: selectedValue }
         let selectedOptionElement = null; // To keep track of the currently selected option button
-
         // Define your questions and options
         const questions = [
             {
@@ -518,7 +480,6 @@
                 info101Themes: ['Module 6: What are the consequences of my Digital Behaviour?', 'Ethics', 'Online Communities', 'Misinformation']
             }
         ];
-
         // --- Screen Management Functions ---
         function showScreen(screenToShow) {
             const screens = [welcomeScreen, questionScreen, processingScreen, resultsScreen];
@@ -532,7 +493,6 @@
             // Scroll the container to the top, not the window
             document.getElementById('app').scrollTo(0, 0);
         }
-
         // --- Question Display and Navigation ---
         function loadQuestion() {
             if (currentQuestionIndex < questions.length) {
@@ -542,7 +502,6 @@
                 selectedOptionElement = null; // Reset selected option
                 nextButton.disabled = true; // Disable next button until an option is selected
                 nextButton.classList.add('opacity-50', 'cursor-not-allowed');
-
                 // Check if a back button should be enabled
                 if (currentQuestionIndex > 0) {
                     backButton.disabled = false;
@@ -551,7 +510,6 @@
                     backButton.disabled = true;
                     backButton.classList.add('opacity-50', 'cursor-not-allowed');
                 }
-
                 question.options.forEach(option => {
                     const button = document.createElement('button');
                     button.textContent = option.text;
@@ -559,7 +517,6 @@
                     button.dataset.value = option.value;
                     button.addEventListener('click', () => selectOption(button, question.id, option.value));
                     optionsContainer.appendChild(button);
-
                     // Check if this is the previously selected option and mark it
                     if (userAnswers[question.id] === option.value) {
                         button.classList.add('selected');
@@ -574,7 +531,6 @@
                 processAnswers();
             }
         }
-
         function selectOption(button, questionId, value) {
             // Remove 'selected' class from previously selected button
             if (selectedOptionElement) {
@@ -583,36 +539,29 @@
             // Add 'selected' class to the new button
             button.classList.add('selected');
             selectedOptionElement = button; // Update selected option reference
-
             userAnswers[questionId] = value; // Store the answer
             nextButton.disabled = false; // Enable next button
             nextButton.classList.remove('opacity-50', 'cursor-not-allowed');
         }
-
         function goToNextQuestion() {
             currentQuestionIndex++;
             loadQuestion();
         }
-
         function goToPreviousQuestion() {
             if (currentQuestionIndex > 0) {
                 currentQuestionIndex--;
                 loadQuestion();
             }
         }
-
         // --- Gemini API Integration for Text and Image ---
         async function processAnswers() {
             showScreen(processingScreen);
             const textApiUrl = `https://simbot-api-proxy-584934630915.australia-southeast2.run.app/generate-text`;
             const imageApiUrl = `https://simbot-api-proxy-584934630915.australia-southeast2.run.app/generate-image`;
-
             // --- Step 1: Generate Text Snapshot and Tip ---
             document.querySelector('#processingScreen p:first-of-type').textContent = "Your mentor is crafting personalised insights...";
             document.querySelector('#processingScreen p:last-of-type').textContent = "Analysing your digital DNA with ✨AI✨.";
-
             let textPrompt = `You are an AI Digital Mentor, an expert in Information Systems from a top university, specialising in helping young people understand their digital lives. Based on the following answers from a user about their digital habits, provide a concise 'Digital Snapshot' (1-2 sentences) summarising their current digital engagement and awareness, and a single 'Future Digital Tip' (1 sentence) that encourages them to explore a relevant INFO101 topic. Your tone should be helpful, encouraging, and knowledgeable. Use New Zealand English spelling, grammar, and phrasing.
-
 User Answers:
 `;
             questions.forEach(q => {
@@ -620,7 +569,6 @@ User Answers:
                 const selectedOptionText = q.options.find(opt => opt.value === userAnswer)?.text || 'N/A';
                 textPrompt += `${q.questionText} - User chose: "${selectedOptionText}"\n`;
             });
-
             textPrompt += `
 INFO101 Themes to consider (refer to these by their full title in the tip):
 - Module 1: What are the building blocks of my Digital Life?
@@ -630,7 +578,6 @@ INFO101 Themes to consider (refer to these by their full title in the tip):
 - Module 5: What is my Digital Footprint?
 - Module 6: What are the consequences of my Digital Behaviour?
 - Module 7: How can I be the Architect of my Digital Life?
-
 Format your response as a JSON object with two keys: "snapshot" and "tip".
 Example:
 {
@@ -638,7 +585,6 @@ Example:
     "tip": "Consider exploring 'Module 5: What is my Digital Footprint?' to better understand and manage your digital footprint!"
 }
 `;
-
             const textPayload = {
                 contents: [{ role: "user", parts: [{ text: textPrompt }] }],
                 generationConfig: {
@@ -659,18 +605,15 @@ Example:
                     { category: "HARM_CATEGORY_DANGEROUS_CONTENT", threshold: "BLOCK_LOW_AND_ABOVE" }
                 ]
             };
-
             let snapshotText = "Could not generate snapshot.";
             let tipText = "Could not generate tip.";
             let imagePrompt = ""; // Will be constructed based on text results
-
             try {
                 const textResponse = await fetch(textApiUrl, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(textPayload)
                 });
-
                 if (!textResponse.ok) { // Check if response was successful
                     const errorDetails = await textResponse.json(); 
                     console.error(`Text API Error: ${textResponse.status} - ${errorDetails.error || 'Unknown Error'}`, errorDetails.details);
@@ -679,9 +622,7 @@ Example:
                     showScreen(resultsScreen); 
                     return; 
                 }
-
                 const textResult = await textResponse.json();
-
                 if (textResult.candidates && textResult.candidates.length > 0 &&
                     textResult.candidates[0].content && textResult.candidates[0].content.parts &&
                     textResult.candidates[0].content.parts.length > 0) {
@@ -699,17 +640,13 @@ Example:
                 snapshotText = "Network error or proxy issue for text generation.";
                 tipText = "Please ensure your local proxy server is running.";
             }
-
             digitalSnapshotElement.textContent = snapshotText;
             futureDigitalTipElement.textContent = tipText;
-
             // --- Step 2: Generate Image Avatar with new, more varied prompts ---
             document.querySelector('#processingScreen p:first-of-type').textContent = "Your mentor is creating your unique digital avatar...";
             document.querySelector('#processingScreen p:last-of-type').textContent = "Analysing your digital DNA with ✨AI✨.";
-
             // Set a placeholder image while generating
             digitalAvatarElement.src = "https://placehold.co/128x128/aabbcc/ffffff?text=Loading...";
-
             const isHandDrawn = Math.random() < 0.2; // 20% chance for a hand-drawn avatar
             
             if (isHandDrawn) {
@@ -718,14 +655,11 @@ Example:
                 const materials = ['cardboard boxes', 'recycled metal parts', 'old toys', 'vintage electronics', 'junk from a workshop'];
                 const emotions = ['happy', 'curious', 'thoughtful', 'playful'];
                 const styles = ['cyberpunk', 'steampunk', 'retro-futuristic'];
-
                 const randomMaterial = materials[Math.floor(Math.random() * materials.length)];
                 const randomEmotion = emotions[Math.floor(Math.random() * emotions.length)];
                 const randomStyle = styles[Math.floor(Math.random() * styles.length)];
-
                 imagePrompt = `A single, unique robot head avatar in a cartoon style. The robot is ${randomEmotion} and looks homemade, constructed from simple, everyday objects like ${randomMaterial}. The style is ${randomStyle} with a vibrant, colorful palette. The background is simple and clean.`;
             }
-
             if (imagePrompt) {
                 const imagePayload = { instances: { prompt: imagePrompt }, parameters: { "sampleCount": 1} };
                 try {
@@ -734,7 +668,6 @@ Example:
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(imagePayload)
                     });
-
                     if (!imageResponse.ok) { // Check if response was successful
                         console.error(`Image API Error: ${imageResponse.status}`);
                         digitalAvatarElement.src = "https://placehold.co/128x128/ff0000/ffffff?text=API+Error";
@@ -757,33 +690,17 @@ Example:
                 digitalAvatarElement.src = "https://placehold.co/128x128/cccccc/333333?text=No+Avatar";
             }
             
-            // --- QR Code Generation ---
-            const moreInfoLink = 'https://nuku.wgtn.ac.nz/courses/17023/pages/home';
-            qrCodeCanvas.innerHTML = '';
-            
-            qrcode = new QRCode(qrCodeCanvas, {
-                text: moreInfoLink,
-                width: 60,
-                height: 60,
-                colorDark: "#333",
-                colorLight: "#ffffff",
-                correctLevel: QRCode.CorrectLevel.H
-            });
-
             // --- Final Step: Display Results ---
             showScreen(resultsScreen);
         }
-
         // --- Event Listeners ---
         startButton.addEventListener('click', () => {
             currentQuestionIndex = 0;
             userAnswers = {};
             loadQuestion();
         });
-
         nextButton.addEventListener('click', goToNextQuestion);
         backButton.addEventListener('click', goToPreviousQuestion);
-
         // UPDATE: Removed event listeners for the deleted buttons
         goHomeButton.addEventListener('click', () => {
             currentQuestionIndex = 0;
